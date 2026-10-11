@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080b12">
+<title>ARENA • Sports Hub</title>
+<style>
+:root{--bg:#080b12;--panel:#101622;--panel2:#141d2b;--line:#263247;--text:#f3f6fc;--muted:#8d9bb2;--lime:#b8ff54;--cyan:#56e7ff;--red:#ff4e68;--radius:20px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#1b2b43 0,transparent 48%),var(--bg);color:var(--text);font:15px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}button{cursor:pointer}.wrap{width:min(1180px,calc(100% - 28px));margin:auto}
+header{position:sticky;top:0;z-index:10;background:#080b12dc;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff0e}.topbar{height:72px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:950;letter-spacing:1.7px}.brandmark{width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,var(--lime),#62f0c4);display:grid;place-items:center;color:#07100b;font-size:21px;box-shadow:0 0 28px #b8ff5425}.brand small{display:block;font-size:9px;letter-spacing:3px;color:var(--muted);font-weight:700;margin-top:-3px}
+.top-right{display:flex;align-items:center;gap:10px}.pill{border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:#c9d4e5;font-size:12px;background:#101622}.online-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime);margin-right:6px}
+.hero{padding:32px 0 22px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch}.hero-main{padding:clamp(22px,4vw,42px);border:1px solid #ffffff12;border-radius:28px;background:linear-gradient(120deg,#18263a,#0e1420 70%);position:relative;overflow:hidden;min-height:230px}.hero-main:after{content:"";position:absolute;width:280px;height:280px;border:1px solid #b8ff5420;border-radius:50%;right:-75px;top:-75px;box-shadow:0 0 0 30px #b8ff5408,0 0 0 60px #b8ff5405}.eyebrow{color:var(--lime);font-size:11px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase}.hero h1{font-size:clamp(30px,5vw,52px);line-height:1.02;letter-spacing:-1.8px;margin:14px 0 12px;max-width:570px}.hero p{color:#a5b2c8;margin:0;max-width:470px}.hero-stat{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.hero-stat span{border:1px solid #ffffff18;background:#ffffff08;border-radius:12px;padding:8px 11px;font-size:11px;color:#d7e1f1}
+.feature{border:1px solid var(--line);border-radius:28px;padding:22px;background:linear-gradient(160deg,#121c2b,#0c111b);display:flex;flex-direction:column;justify-content:space-between;min-height:230px}.feature-head{display:flex;justify-content:space-between;align-items:center}.mini-label{font-size:10px;letter-spacing:1.8px;color:var(--muted);font-weight:800}.big-icon{font-size:42px}.feature strong{font-size:23px;display:block;margin-top:12px}.feature p{font-size:12px;color:var(--muted);margin:6px 0 16px}.feature a{display:flex;align-items:center;justify-content:space-between;border-radius:12px;background:var(--lime);color:#09100b;font-weight:900;padding:12px 14px;font-size:12px}
+.section{padding:18px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:15px}.section-head h2{font-size:20px;letter-spacing:-.4px;margin:0}.section-head p{margin:4px 0 0;color:var(--muted);font-size:12px}.sports-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.sport{border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#131b29,#0e131d);padding:15px 12px;display:flex;align-items:center;gap:11px;min-width:0;transition:.2s}.sport:hover,.league:hover{transform:translateY(-2px);border-color:#b8ff5470}.sport .emoji{font-size:25px}.sport b{display:block;font-size:12px}.sport small{color:var(--muted);font-size:10px}
+.leagues{display:flex;gap:9px;overflow-x:auto;padding:2px 1px 8px;scrollbar-width:thin}.league{flex:0 0 auto;display:flex;align-items:center;gap:9px;padding:11px 14px;border:1px solid var(--line);border-radius:14px;background:#101622;font-size:12px;font-weight:800;transition:.2s}.league-logo{height:28px;min-width:28px;border-radius:9px;background:#202c40;display:grid;place-items:center;font-size:11px;color:var(--lime);font-weight:950;padding:0 5px}
+.match-card{border:1px solid #2b3b52;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,#131d2c,#0d121c 70%);box-shadow:0 18px 55px #0003}.match-top{padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #ffffff0d}.league-tag{display:flex;align-items:center;gap:8px;font-size:11px;color:#b8c5d8;font-weight:800}.tag-logo{width:28px;height:28px;display:grid;place-items:center;border-radius:9px;background:#25354c;color:var(--lime);font-size:10px;font-weight:950}.live{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border:1px solid #ff4e6840;background:#ff4e6813;color:#ff8193;border-radius:999px;font-size:10px;font-weight:950;letter-spacing:1px}.live-dot{width:7px;height:7px;background:var(--red);border-radius:50%;animation:pulse 1.3s infinite;box-shadow:0 0 12px #ff4e68}.match-body{padding:25px 18px 22px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px}.team{display:flex;align-items:center;gap:13px;min-width:0}.team.away{flex-direction:row-reverse;text-align:right}.team-logo{width:clamp(55px,9vw,82px);height:clamp(55px,9vw,82px);border-radius:22px;background:#1c293c;border:1px solid #ffffff15;display:grid;place-items:center;overflow:hidden;flex-shrink:0;font-size:26px;font-weight:950;color:#fff}.team-logo img{width:100%;height:100%;object-fit:contain;padding:8px}.team-name{font-size:clamp(13px,2vw,18px);font-weight:950;line-height:1.2;overflow-wrap:anywhere}.team-sub{font-size:10px;color:var(--muted);margin-top:5px}.versus{text-align:center;color:#65758d;font-size:11px;font-weight:900;letter-spacing:2px}.score{font-size:clamp(26px,5vw,38px);font-weight:950;color:#fff;letter-spacing:1px;margin:3px 0}.match-state{font-size:10px;color:var(--lime);font-weight:800}.match-bottom{padding:0 18px 18px}.server-label{font-size:10px;letter-spacing:1.6px;color:var(--muted);font-weight:900;margin:0 0 9px}.servers{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.server{background:#172234;border:1px solid #2a3b53;color:#dbe6f6;border-radius:12px;padding:11px 7px;font-size:11px;font-weight:850;transition:.18s}.server:hover{border-color:var(--lime);color:var(--lime);background:#1b2b35}.server.active{border-color:#b8ff5470;background:#b8ff5410;color:var(--lime)}.server small{display:block;color:#8090a8;font-size:9px;margin-top:3px}.note{font-size:10px;color:#72819a;margin-top:12px}
+.sponsor{margin:25px 0 34px;border:1px dashed #34435a;border-radius:22px;overflow:hidden;background:#0e1420;min-height:110px;display:block;position:relative}.sponsor img{width:100%;max-height:260px;object-fit:cover;display:block}.sponsor-placeholder{min-height:110px;display:flex;align-items:center;justify-content:center;gap:12px;color:#8391a8;text-align:center;padding:18px}.sponsor-placeholder strong{display:block;color:#c4cedd;font-size:12px}.sponsor-placeholder span{font-size:10px}
+footer{border-top:1px solid #ffffff10;padding:22px 0 32px;color:#718099;font-size:11px}.foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}.foot b{color:#c3cee0;letter-spacing:1.5px}
+.secret{position:fixed;right:10px;bottom:10px;z-index:20;width:29px;height:29px;border-radius:50%;border:1px solid #344056;background:#0d131ee0;color:#6d7b91;font-size:13px;opacity:.35;transition:.2s}.secret:hover{opacity:1;color:var(--lime);border-color:var(--lime)}
+.modal{position:fixed;inset:0;z-index:30;background:#02040bd9;backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:16px}.modal.open{display:flex}.modal-box{width:min(620px,100%);max-height:90dvh;overflow:auto;background:#101724;border:1px solid #2a3b52;border-radius:22px;padding:22px;box-shadow:0 25px 90px #0009}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.modal-head h3{margin:0;font-size:19px}.close{border:1px solid var(--line);background:#182234;color:#d9e4f5;border-radius:10px;padding:6px 10px}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:11px;color:#a9b8ce;font-weight:800}.field input,.field textarea{width:100%;background:#080d15;border:1px solid #2a3b52;color:#f3f6fc;border-radius:11px;padding:11px 12px;outline:none}.field input:focus,.field textarea:focus{border-color:var(--lime)}.field textarea{min-height:95px;resize:vertical}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.btn{border:1px solid #2d3d55;border-radius:11px;padding:11px 15px;background:#1a2639;color:#e7effb;font-size:12px;font-weight:900}.btn.primary{background:var(--lime);border-color:var(--lime);color:#09100b}.btn.danger{color:#ff8494}.help{font-size:10px;color:#8493aa;line-height:1.5}.toast{position:fixed;z-index:50;left:50%;bottom:54px;transform:translateX(-50%);background:#d9ffb2;color:#0b1505;padding:10px 15px;border-radius:12px;font-weight:900;font-size:12px;display:none;box-shadow:0 10px 30px #0008}.toast.show{display:block}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:20px}.feature{min-height:180px}.sports-grid{grid-template-columns:repeat(2,1fr)}.sports-grid .sport:last-child{grid-column:span 2}.match-body{padding:21px 12px;gap:6px}.team{flex-direction:column!important;text-align:center!important;gap:8px}.team.away{flex-direction:column!important}.team-logo{width:62px;height:62px;border-radius:18px}.team-name{font-size:13px}.team-sub{font-size:9px}.servers{grid-template-columns:repeat(2,1fr)}.match-top{padding:13px}.match-bottom{padding:0 13px 15px}.match-body{grid-template-columns:1fr 74px 1fr}.topbar{height:64px}.pill.hide-mobile{display:none}}
+@media(max-width:380px){.wrap{width:calc(100% - 20px)}.hero-main{padding:23px}.team-logo{width:52px;height:52px}.team-name{font-size:12px}.versus{font-size:9px}.match-body{grid-template-columns:1fr 58px 1fr}.server{font-size:10px}.two{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap topbar">
+  <a class="brand" href="#" aria-label="Arena home"><span class="brandmark">A</span><span>ARENA<small>SPORTS NETWORK</small></span></a>
+  <div class="top-right"><span class="pill hide-mobile">MULTI-SPORT EXPERIENCE</span><span class="pill"><i class="online-dot"></i>ALL SYSTEMS GO</span></div>
+</div></header>
+<main class="wrap">
+<section class="hero">
+  <div class="hero-main"><div class="eyebrow">YOUR DAILY SPORTS DESTINATION</div><h1>Feel every<br><span style="color:var(--lime)">moment.</span></h1><p>Football, cricket, racing and more — one clean home for the sports you love.</p><div class="hero-stat"><span>✦ PREMIUM INTERFACE</span><span>◈ MOBILE FIRST</span><span>↗ FAST & LIGHT</span></div></div>
+  <div class="feature"><div class="feature-head"><span class="mini-label">TODAY'S SPOTLIGHT</span><span class="big-icon">🏆</span></div><div><strong>Game on.</strong><p>Your arena. Your teams. Your matchday ritual.</p><a id="spotlightLink" href="#featured-match">EXPLORE FEATURED MATCH <span>↗</span></a></div></div>
+</section>
+<section class="section"><div class="section-head"><div><h2>Explore sports</h2><p>One hub. Every kind of fan.</p></div></div>
+<div class="sports-grid">
+<a id="sportFootball" class="sport" href="#featured-match"><span class="emoji">⚽</span><span><b>Football</b><small>Clubs & nations</small></span></a>
+<a id="sportCricket" class="sport" href="#featured-match"><span class="emoji">🏏</span><span><b>Cricket</b><small>Every innings</small></span></a>
+<a id="sportBadminton" class="sport" href="#featured-match"><span class="emoji">🏸</span><span><b>Badminton</b><small>Fast rallies</small></span></a>
+<a id="sportWWE" class="sport" href="#featured-match"><span class="emoji">🤼</span><span><b>WWE</b><small>Sports entertainment</small></span></a>
+<a id="sportRacing" class="sport" href="#featured-match"><span class="emoji">🏎️</span><span><b>Car Racing</b><small>Full throttle</small></span></a>
+</div></section>
+<section class="section"><div class="section-head"><div><h2>Popular tournaments</h2><p>Tap a league to jump to the match hub.</p></div></div>
+<div class="leagues">
+<a id="leagueUCL" class="league" href="#featured-match"><span class="league-logo">UCL</span>Champions League</a>
+<a id="leagueLaLiga" class="league" href="#featured-match"><span class="league-logo">LL</span>LaLiga</a>
+<a id="leaguePL" class="league" href="#featured-match"><span class="league-logo">PL</span>Premier League</a>
+<a id="leagueMLS" class="league" href="#featured-match"><span class="league-logo">MLS</span>MLS</a>
+<a id="leagueSerieA" class="league" href="#featured-match"><span class="league-logo">SA</span>Serie A</a>
+</div></section>
+<section class="section" id="featured-match"><div class="section-head"><div><h2>Featured match</h2><p>Match centre • demo presentation</p></div><span class="pill">MATCHDAY</span></div>
+<div class="match-card">
+  <div class="match-top"><div class="league-tag"><span class="tag-logo" id="leagueBadge">PL</span><span id="leagueName">PREMIER LEAGUE</span></div><span class="live"><i class="live-dot"></i><span id="liveLabel">LIVE CENTRE</span></span></div>
+  <div class="match-body" id="matchBody">
+    <div class="team"><div class="team-logo" id="homeLogo">🔴</div><div><div class="team-name" id="homeName">Liverpool</div><div class="team-sub">HOME TEAM</div></div></div>
+    <div class="versus"><div id="matchTime">MATCH CENTRE</div><div class="score" id="score">VS</div><div class="match-state" id="matchState">FEATURED FIXTURE</div></div>
+    <div class="team away"><div class="team-logo" id="awayLogo">🔵</div><div><div class="team-name" id="awayName">Man City</div><div class="team-sub">AWAY TEAM</div></div></div>
+  </div>
+  <div class="match-bottom"><div class="server-label">CHOOSE YOUR EXPERIENCE</div><div class="servers" id="servers">
+    <button class="server active" data-server="HD Server 1080p">HD Server 1080p<small>High definition</small></button>
+    <button class="server" data-server="SP Super Fast">SP Super Fast<small>Low-latency UI</small></button>
+    <button class="server" data-server="SP 4K Server">SP 4K Server<small>Ultra HD label</small></button>
+    <button class="server" data-server="Backup Server">Backup Server<small>Alternate option</small></button>
+  </div><div class="note" id="serverNote">Select a server option to open its configured link. No stream is embedded by default.</div></div>
+</div></section>
+<a class="sponsor" id="sponsorLink" href="#" aria-label="Sponsor banner" style="display:block">
+  <div class="sponsor-placeholder" id="sponsorPlaceholder"><span style="font-size:28px">✦</span><span><strong>YOUR SPONSOR BANNER</strong><span>Add your banner image URL from the settings panel.</span></span></div><img id="sponsorImage" alt="Sponsor banner" style="display:none">
+</a>
+</main>
+<footer><div class="wrap foot"><span><b>ARENA</b> © <span id="year"></span> • SPORTS, WITH STYLE.</span><span>Independent fan-made demo interface • Not affiliated with any league.</span></div></footer>
+<button class="secret" id="secretBtn" title="Settings" aria-label="Open settings">?</button>
+<div class="modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle"><div class="modal-box" style="max-width:390px"><div class="modal-head"><h3 id="loginTitle">Private settings</h3><button class="close" data-close="loginModal">✕</button></div><p class="help">Enter your admin password to edit the match card and sponsor banner.</p><form id="loginForm"><div class="field"><label for="password">ADMIN PASSWORD</label><input id="password" type="password" autocomplete="current-password" placeholder="Enter password" required></div><div class="actions"><button class="btn primary" type="submit">Unlock panel</button></div></form><p class="help">Note: a password inside a single HTML file is only a casual privacy gate, not secure authentication.</p></div></div>
+<div class="modal" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminTitle"><div class="modal-box"><div class="modal-head"><h3 id="adminTitle">Arena control panel</h3><button class="close" data-close="adminModal">✕</button></div>
+<form id="settingsForm">
+<div class="two"><div class="field"><label for="homeInput">HOME TEAM NAME</label><input id="homeInput" maxlength="50" value="Liverpool"></div><div class="field"><label for="awayInput">AWAY TEAM NAME</label><input id="awayInput" maxlength="50" value="Man City"></div></div>
+<div class="two"><div class="field"><label for="homeLogoInput">HOME LOGO IMAGE URL</label><input id="homeLogoInput" type="url" placeholder="https://example.com/home.png"></div><div class="field"><label for="awayLogoInput">AWAY LOGO IMAGE URL</label><input id="awayLogoInput" type="url" placeholder="https://example.com/away.png"></div></div>
+<div class="two"><div class="field"><label for="leagueInput">TOURNAMENT / LEAGUE</label><input id="leagueInput" maxlength="60" value="PREMIER LEAGUE"></div><div class="field"><label for="badgeInput">LEAGUE SHORT NAME</label><input id="badgeInput" maxlength="8" value="PL"></div></div>
+<div class="two"><div class="field"><label for="timeInput">MATCH LABEL</label><input id="timeInput" maxlength="40" value="MATCH CENTRE"></div><div class="field"><label for="stateInput">STATUS LABEL</label><input id="stateInput" maxlength="40" value="FEATURED FIXTURE"></div></div>
+<div class="field"><label for="scoreInput">CENTRE TEXT (e.g. VS, 2 - 1)</label><input id="scoreInput" maxlength="12" value="VS"></div>
+<div class="field"><label for="matchLinkInput">MATCH CARD LINK (click the centre of the card)</label><input id="matchLinkInput" type="url" placeholder="https://example.com/match"></div>
+<div class="field"><label>SPORT & TOURNAMENT LINKS (leave blank to jump to the match card)</label><div class="two">
+<div class="field"><label for="footballLinkInput">Football URL</label><input id="footballLinkInput" type="url" placeholder="https://example.com/football"></div>
+<div class="field"><label for="cricketLinkInput">Cricket URL</label><input id="cricketLinkInput" type="url" placeholder="https://example.com/cricket"></div>
+<div class="field"><label for="badmintonLinkInput">Badminton URL</label><input id="badmintonLinkInput" type="url" placeholder="https://example.com/badminton"></div>
+<div class="field"><label for="wweLinkInput">WWE URL</label><input id="wweLinkInput" type="url" placeholder="https://example.com/wwe"></div>
+<div class="field"><label for="racingLinkInput">Car Racing URL</label><input id="racingLinkInput" type="url" placeholder="https://example.com/racing"></div>
+<div class="field"><label for="uclLinkInput">UCL URL</label><input id="uclLinkInput" type="url" placeholder="https://example.com/ucl"></div>
+<div class="field"><label for="laligaLinkInput">LaLiga URL</label><input id="laligaLinkInput" type="url" placeholder="https://example.com/laliga"></div>
+<div class="field"><label for="plLinkInput">Premier League URL</label><input id="plLinkInput" type="url" placeholder="https://example.com/premier-league"></div>
+<div class="field"><label for="mlsLinkInput">MLS URL</label><input id="mlsLinkInput" type="url" placeholder="https://example.com/mls"></div>
+<div class="field"><label for="serieALinkInput">Serie A URL</label><input id="serieALinkInput" type="url" placeholder="https://example.com/serie-a"></div>
+<div class="field"><label for="spotlightLinkInput">Spotlight Button URL</label><input id="spotlightLinkInput" type="url" placeholder="https://example.com/featured"></div>
+</div></div>
+<div class="field"><label>SERVER OPTIONS (one per line: Label | URL)</label><textarea id="serversInput" placeholder="HD Server 1080p | https://example.com"></textarea></div>
+<div class="field"><label for="sponsorImageInput">SPONSOR BANNER IMAGE URL</label><input id="sponsorImageInput" type="url" placeholder="https://example.com/banner.jpg"></div>
+<div class="field"><label for="sponsorUrlInput">SPONSOR / WEBSITE LINK</label><input id="sponsorUrlInput" type="url" placeholder="https://example.com"></div>
+<div class="actions"><button class="btn primary" type="submit">Save changes</button><button class="btn" type="button" id="exportBtn">Export settings JSON</button><button class="btn" type="button" id="importBtn">Import settings JSON</button><button class="btn danger" type="button" id="resetBtn">Reset demo</button></div>
+<div class="field" id="jsonWrap" style="display:none"><label for="jsonInput">SETTINGS JSON</label><textarea id="jsonInput" placeholder="Paste exported settings JSON here"></textarea><div class="actions"><button class="btn primary" type="button" id="applyJsonBtn">Apply JSON</button></div></div>
+<p class="help">Changes are saved in this browser on this device. For a public website with real security or shared editing, use a server-side admin system. Logos/banner need direct public image URLs (https://...). Server links only open the URL you configure; this demo does not provide live streams.</p>
+</form></div></div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+(() => {
+'use strict';
+const PASSWORD = 'Zihad@750';
+const KEY = 'arenaSportsSettings_v1';
+const defaults = {
+ home:'Liverpool', away:'Man City', homeLogo:'', awayLogo:'', league:'PREMIER LEAGUE', badge:'PL',
+ time:'MATCH CENTRE', state:'FEATURED FIXTURE', score:'VS',
+ servers:[
+  {label:'HD Server 1080p',url:''},{label:'SP Super Fast',url:''},
+  {label:'SP 4K Server',url:''},{label:'Backup Server',url:''}
+ ], matchLink:'', navLinks:{football:'',cricket:'',badminton:'',wwe:'',racing:'',ucl:'',laliga:'',pl:'',mls:'',serieA:'',spotlight:''}, sponsorImage:'', sponsorUrl:''
+};
+let settings = structuredClone(defaults);
+const $ = id => document.getElementById(id);
+function safeUrl(value){try{const u=new URL(String(value||''));return ['https:','http:'].includes(u.protocol)?u.href:''}catch{return ''}}
+function toast(message){const t=$('toast');t.textContent=message;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+function openModal(id){$(id).classList.add('open')}
+function closeModal(id){$(id).classList.remove('open')}
+function setLogo(el, url, fallback){const safe=safeUrl(url);el.replaceChildren();if(safe){const img=document.createElement('img');img.src=safe;img.alt='Team logo';img.loading='lazy';img.referrerPolicy='no-referrer';img.onerror=()=>{el.textContent=fallback};el.append(img)}else{el.textContent=fallback}}
+function renderServers(){
+ const host=$('servers');host.replaceChildren();
+ settings.servers.slice(0,8).forEach((server,i)=>{
+  const b=document.createElement('button');b.className='server'+(i===0?' active':'');b.type='button';
+  const label=document.createElement('span');label.textContent=server.label||`Server ${i+1}`;b.append(label);
+  const small=document.createElement('small');small.textContent=i===0?'Recommended':(server.url?'Open configured link':'Link not configured');b.append(small);
+  b.addEventListener('click',()=>{
+   host.querySelectorAll('.server').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+   const url=safeUrl(server.url);
+   if(url){window.location.href=url;$('serverNote').textContent='Opening configured link: '+(server.label||'server')}
+   else {$('serverNote').textContent='“'+(server.label||'Server')+'” is a visual option only. Add its URL in the private settings panel.';toast('No link configured for this option')}
+  });host.append(b)
+ });
+}
+function render(){
+ $('homeName').textContent=settings.home||'Home team';$('awayName').textContent=settings.away||'Away team';
+ setLogo($('homeLogo'),settings.homeLogo,'⚽');setLogo($('awayLogo'),settings.awayLogo,'⚽');
+ $('leagueName').textContent=settings.league||'TOURNAMENT';$('leagueBadge').textContent=(settings.badge||'SP').slice(0,8);
+ $('matchTime').textContent=settings.time||'MATCH CENTRE';$('matchState').textContent=settings.state||'FEATURED FIXTURE';$('score').textContent=settings.score||'VS';
+ renderServers();
+ const img=safeUrl(settings.sponsorImage),link=safeUrl(settings.sponsorUrl);
+ $('sponsorImage').style.display=img?'block':'none';$('sponsorPlaceholder').style.display=img?'none':'flex';
+ if(img){$('sponsorImage').src=img;$('sponsorImage').onerror=()=>{ $('sponsorImage').style.display='none';$('sponsorPlaceholder').style.display='flex';toast('Banner image could not load') }}
+ $('sponsorLink').href=link||'#';$('sponsorLink').onclick=e=>{if(!link)e.preventDefault()};
+ const navMap = [
+  ['sportFootball','football'],['sportCricket','cricket'],['sportBadminton','badminton'],['sportWWE','wwe'],['sportRacing','racing'],
+  ['leagueUCL','ucl'],['leagueLaLiga','laliga'],['leaguePL','pl'],['leagueMLS','mls'],['leagueSerieA','serieA'],['spotlightLink','spotlight']
+ ];
+ navMap.forEach(([id,key])=>{const el=$(id);if(el){const u=safeUrl(settings.navLinks?.[key]);el.href=u||'#featured-match';el.onclick=e=>{if(!u){e.preventDefault();$('featured-match').scrollIntoView({behavior:'smooth'})}}}});
+ const matchUrl=safeUrl(settings.matchLink);
+ const body=$('matchBody');
+ body.style.cursor=matchUrl?'pointer':'default';
+ body.setAttribute('role',matchUrl?'link':'group');
+ body.setAttribute('tabindex',matchUrl?'0':'-1');
+ body.setAttribute('aria-label',matchUrl?'Open configured match link':'Featured match card');
+ body.onclick=()=>{if(matchUrl)window.location.href=matchUrl};
+ body.onkeydown=e=>{if(matchUrl&&(e.key==='Enter'||e.key===' ')){e.preventDefault();window.location.href=matchUrl}};
+}
+function loadForm(){
+ $('homeInput').value=settings.home;$('awayInput').value=settings.away;$('homeLogoInput').value=settings.homeLogo;$('awayLogoInput').value=settings.awayLogo;
+ $('leagueInput').value=settings.league;$('badgeInput').value=settings.badge;$('timeInput').value=settings.time;$('stateInput').value=settings.state;$('scoreInput').value=settings.score;
+ $('serversInput').value=settings.servers.map(s=>`${s.label} | ${s.url||''}`).join('\n');
+ $('matchLinkInput').value=settings.matchLink||'';
+ const nl=settings.navLinks||{};
+ $('footballLinkInput').value=nl.football||'';$('cricketLinkInput').value=nl.cricket||'';
+ $('badmintonLinkInput').value=nl.badminton||'';$('wweLinkInput').value=nl.wwe||'';$('racingLinkInput').value=nl.racing||'';
+ $('uclLinkInput').value=nl.ucl||'';$('laligaLinkInput').value=nl.laliga||'';$('plLinkInput').value=nl.pl||'';
+ $('mlsLinkInput').value=nl.mls||'';$('serieALinkInput').value=nl.serieA||'';$('spotlightLinkInput').value=nl.spotlight||'';
+ $('sponsorImageInput').value=settings.sponsorImage;$('sponsorUrlInput').value=settings.sponsorUrl;
+}
+function readForm(){
+ const servers=$('serversInput').value.split('\n').map(line=>line.trim()).filter(Boolean).map(line=>{
+  const parts=line.split('|');return {label:(parts.shift()||'Server').trim().slice(0,45),url:safeUrl(parts.join('|').trim())}
+ }).filter(s=>s.label).slice(0,8);
+ return {home:$('homeInput').value.trim().slice(0,50),away:$('awayInput').value.trim().slice(0,50),
+ homeLogo:safeUrl($('homeLogoInput').value),awayLogo:safeUrl($('awayLogoInput').value),
+ league:$('leagueInput').value.trim().slice(0,60),badge:$('badgeInput').value.trim().slice(0,8),
+ time:$('timeInput').value.trim().slice(0,40),state:$('stateInput').value.trim().slice(0,40),score:$('scoreInput').value.trim().slice(0,12),
+ servers:servers.length?servers:defaults.servers,
+ matchLink:safeUrl($('matchLinkInput').value),
+ navLinks:{football:safeUrl($('footballLinkInput').value),cricket:safeUrl($('cricketLinkInput').value),badminton:safeUrl($('badmintonLinkInput').value),wwe:safeUrl($('wweLinkInput').value),racing:safeUrl($('racingLinkInput').value),ucl:safeUrl($('uclLinkInput').value),laliga:safeUrl($('laligaLinkInput').value),pl:safeUrl($('plLinkInput').value),mls:safeUrl($('mlsLinkInput').value),serieA:safeUrl($('serieALinkInput').value),spotlight:safeUrl($('spotlightLinkInput').value)},
+ sponsorImage:safeUrl($('sponsorImageInput').value),sponsorUrl:safeUrl($('sponsorUrlInput').value)};
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(settings));return true}catch{return false}}
+$('secretBtn').addEventListener('click',()=>{ $('password').value='';openModal('loginModal');setTimeout(()=>$('password').focus(),80)});
+$('loginForm').addEventListener('submit',e=>{e.preventDefault();if($('password').value===PASSWORD){closeModal('loginModal');loadForm();openModal('adminModal');toast('Settings unlocked')}else{toast('Incorrect password');$('password').select()}});
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeModal(b.dataset.close)));
+document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m.id)}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal.open').forEach(m=>closeModal(m.id))});
+$('settingsForm').addEventListener('submit',e=>{e.preventDefault();settings=readForm();if(save()){render();closeModal('adminModal');toast('Changes saved on this device')}else{toast('Browser storage unavailable; export JSON as backup')}});
+$('exportBtn').addEventListener('click',()=>{$('jsonWrap').style.display='grid';$('jsonInput').value=JSON.stringify(settings,null,2);toast('Settings JSON ready to copy')});
+$('importBtn').addEventListener('click',()=>{$('jsonWrap').style.display='grid';$('jsonInput').focus()});
+$('applyJsonBtn').addEventListener('click',()=>{try{const obj=JSON.parse($('jsonInput').value);if(!obj||typeof obj!=='object'||Array.isArray(obj))throw Error();settings={...defaults,...obj};settings.servers=Array.isArray(obj.servers)?obj.servers.map(s=>({label:String(s.label||'Server').slice(0,45),url:safeUrl(s.url)})).slice(0,8):defaults.servers;settings.homeLogo=safeUrl(settings.homeLogo);settings.awayLogo=safeUrl(settings.awayLogo);settings.matchLink=safeUrl(settings.matchLink);settings.navLinks={...defaults.navLinks,...(obj.navLinks||{})};Object.keys(settings.navLinks).forEach(k=>settings.navLinks[k]=safeUrl(settings.navLinks[k]));settings.sponsorImage=safeUrl(settings.sponsorImage);settings.sponsorUrl=safeUrl(settings.sponsorUrl);if(save()){render();loadForm();toast('JSON imported; save panel to finish')}else toast('Could not save settings')}catch{toast('Invalid JSON — check the pasted text')}});
+$('resetBtn').addEventListener('click',()=>{if(confirm('Reset match and banner to the original demo?')){settings=structuredClone(defaults);save();render();loadForm();$('jsonWrap').style.display='none';toast('Demo reset')}});
+try{const saved=localStorage.getItem(KEY);if(saved){const parsed=JSON.parse(saved);if(parsed&&typeof parsed==='object'){settings={...defaults,...parsed};if(!Array.isArray(settings.servers))settings.servers=defaults.servers;settings.matchLink=safeUrl(settings.matchLink);settings.navLinks={...defaults.navLinks,...(settings.navLinks||{})};Object.keys(settings.navLinks).forEach(k=>settings.navLinks[k]=safeUrl(settings.navLinks[k]));}}}catch{}
+$('year').textContent=new Date().getFullYear();render();
+})();
+</script>
+</body>
+</html>
